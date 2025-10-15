@@ -13,29 +13,10 @@
       <div class="col-lg-6 d-none d-lg-block">
         <nav>
           <ul class="navigation d-flex justify-content-around">
-            <li class="navigation-item">
-              <NuxtLink to="/products" class="navigation-link">
-                Womens</NuxtLink
+            <li class="navigation-item" v-for="link in links" :key="link.id">
+              <NuxtLink :to="link.route" class="navigation-link">
+                {{ link.text }}</NuxtLink
               >
-            </li>
-            <li class="navigation-item">
-              <NuxtLink to="/products" class="navigation-link"> Mens</NuxtLink>
-            </li>
-            <li class="navigation-item">
-              <NuxtLink to="/products" class="navigation-link">
-                Clothing</NuxtLink
-              >
-            </li>
-            <li class="navigation-item">
-              <NuxtLink to="/products" class="navigation-link">
-                Accessories</NuxtLink
-              >
-            </li>
-            <li class="navigation-item">
-              <NuxtLink to="/products" class="navigation-link"> Shoes</NuxtLink>
-            </li>
-            <li class="navigation-item">
-              <NuxtLink to="/products" class="navigation-link"> All</NuxtLink>
             </li>
           </ul>
         </nav>
@@ -69,3 +50,39 @@
     <!-- /.row -->
   </header>
 </template>
+<script setup>
+let links = ref([
+  {
+    id: 0,
+    route: { path: "/products", query: { field: "gender", name: "Womens" } },
+    text: "Womens",
+  },
+  {
+    id: 1,
+    route: { path: "/products", query: { field: "gender", name: "Mens" } },
+    text: "Mens",
+  },
+  {
+    id: 2,
+    route: {
+      path: "/products",
+      query: { field: "category", name: "Clothing" },
+    },
+    text: "Clothing",
+  },
+  {
+    id: 3,
+    route: {
+      path: "/products",
+      query: { field: "category", name: "Accessories" },
+    },
+    text: "Accessories",
+  },
+  {
+    id: 4,
+    route: { path: "/products", query: { field: "category", name: "Shoes" } },
+    text: "Shoes",
+  },
+  { id: 5, route: { path: "/products" }, text: "All" },
+]);
+</script>
