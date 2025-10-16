@@ -42,8 +42,4 @@ const { data } = await useAsyncData(
   },
   { watch: [field, name] }
 );
-
-definePageMeta({
-  layout: "custom",
-});
 </script>

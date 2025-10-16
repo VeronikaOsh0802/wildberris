@@ -184,7 +184,10 @@
 
           <p class="goods-description">{{ card.description }}</p>
 
-          <button class="button goods-card-btn add-to-cart" data-id="012">
+          <button
+            class="button goods-card-btn add-to-cart"
+            @click="addToCart(card)"
+          >
             <span class="button-price">${{ card.price }}</span>
           </button>
         </div>
@@ -193,6 +196,21 @@
   </section>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import type { CartItem } from "~/models/cart-item.model";
+import type { Product } from "~/models/products.model";
 const { data } = await useFetch("/api/new-products");
+
+const cartItems = useCart();
+
+const addToCart = (product: Product) => {
+  const cartItem: CartItem = {
+    id: product.id,
+    name: product.name,
+    price: product.price,
+    count: 1,
+  };
+
+  console.log(cartItem);
+};
 </script>
